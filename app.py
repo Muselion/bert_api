@@ -1,6 +1,7 @@
 import gradio as gr
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
+import numpy as np
 
 # Charger le modèle BERT depuis Hugging Face
 model_name = "Muselion/Test_BERT"
