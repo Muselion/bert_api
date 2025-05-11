@@ -2,6 +2,7 @@ import gradio as gr
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
 import numpy as np
+import os
 
 # Charger le modèle BERT depuis Hugging Face
 model_name = "Muselion/Test_BERT"
@@ -36,7 +37,11 @@ def predict(text):
     return ", ".join(active_classes)
 
 # Créer une interface Gradio
-interface = gr.Interface(fn=predict, inputs=gr.Textbox(lines=5, placeholder="Enter your text here"), outputs="text")
+# interface = gr.Interface(fn=predict, inputs=gr.Textbox(lines=5, placeholder="Enter your text here"), outputs="text")
 
 # Lancer l'interface
-interface.launch()
+# interface.launch()
+# Si l'environnement est un test (ex. pytest), ne pas lancer l'interface
+if os.getenv("ENV") != "test":
+    interface = gr.Interface(fn=predict, inputs=gr.Textbox(lines=5, placeholder="Enter your text here"), outputs="text")
+    interface.launch()
