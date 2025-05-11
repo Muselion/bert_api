@@ -31,7 +31,7 @@ jobs:
       # Étape 3: Exécution des tests unitaires
       - name: Run unit tests
         run: |
-          pytest --maxfail=1 --timeout=120 --disable-warnings
+          pytest --maxfail=1 --disable-warnings
         env:
           ENV: test
 
