@@ -34,13 +34,3 @@ jobs:
           pytest --maxfail=1 --disable-warnings
         env:
           ENV: test
-
-      # Étape 4: Copier uniquement `app.py` sur PythonAnywhere
-      - name: Copy app.py to PythonAnywhere
-        run: |
-          scp app.py muselion@Muselion.pythonanywhere.com:/home/muselion/mysite/app.py
-
-      # Étape 4: Déploiement (si les tests passent)
-      - name: Deploy to PythonAnywhere
-        run: |
-          ssh muselion@Muselion.pythonanywhere.com "touch /home/muselion/mysite/app.py && restart your_project"
